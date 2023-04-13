@@ -117,9 +117,6 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
         $totallyGuarded = $this->totallyGuarded();
 
         foreach ($this->fillableFromArray($attributes) as $key => $value) {
-            // The developers may choose to place some attributes in the "fillable"
-            // array, which means only those attributes may be set through mass
-            // assignment to the model, and all others will just be ignored.
             if ($this->isFillable($key)) {
                 $this->setAttribute($key, $value);
             } elseif ($totallyGuarded) {
@@ -169,9 +166,6 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
             return true;
         }
 
-        // If the key is in the "fillable" array, we can of course assume that it's
-        // a fillable attribute. Otherwise, we will check the guarded array when
-        // we need to determine if the attribute is black-listed on the model.
         if (in_array($key, $this->fillable, true)) {
             return true;
         }
