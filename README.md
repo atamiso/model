@@ -16,14 +16,6 @@
 
 ## Installation
 
-プライベートリポジトリなので下記を`composer.json`に追加
-
-``` json
-"repositories": [
-    { "type": "vcs", "url": "git@github.com:atamiso/model.git" }
-],
-```
-
 ``` bash
 composer require atamso/model
 ```
